@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  root 'pages#index'
-  get "user/:id", :to => "pages#show" # この1行を編集
   devise_for :users
-  resources :pages, only: :index
+  root to: 'tweets#index'
+  resources :tweets do
+    resources :comments, only: :create
+    collection do
+      get 'search'
+    end
+  end
+  resources :users, only: :show
 end
