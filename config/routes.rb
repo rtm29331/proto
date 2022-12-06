@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'pages#index'
+  get "user/:id", :to => "pages#show" # この1行を編集
+  devise_for :users
 end
